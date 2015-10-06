@@ -1,9 +1,9 @@
 {
   "name": "cgbi-to-png",
-  "description":"Revert Xcode PNG compression (CgBI) in plain javascript.",
-  "version": "0.0.1",
-  "keywords":"xcode,revert,optimisation,compression,cgbi,png,cgbi-to-png,file,convert",
-  "license":"mit",
+  "description": "Revert Xcode PNG compression (CgBI) in plain javascript.",
+  "version": "1.0.0",
+  "keywords": "xcode,revert,optimisation,compression,cgbi,png,cgbi-to-png,file,convert",
+  "license": "mit",
   "dependencies": {
     "bufferpack": "0.0.6",
     "crc": "^3.3.0",
@@ -16,5 +16,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jakubknejzlik/cgbi-to-png.git"
-   }
+  }
 }
