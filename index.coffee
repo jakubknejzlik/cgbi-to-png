@@ -5,8 +5,8 @@ zlib = require('zlib')
 crc = require('crc')
 
 #unpack = require('./lib/unpack')
-compress = require('./lib/compress')
-toArrayBuffer = require('./lib/toArrayBuffer')
+#compress = require('./lib/compress')
+#toArrayBuffer = require('./lib/toArrayBuffer')
 
 #PNGHEADER = new Buffer('\x89PNG\r\n\x1A\n')
 PNGHEADER_BASE64 = 'iVBORw0KGgo='
