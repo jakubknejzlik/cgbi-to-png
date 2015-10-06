@@ -15,6 +15,3 @@ cgbiToPng(fs.createReadStream(filePath),function(err,pngStream){
 });
 
 ```
-
-# Contribution
-If you find any bugs in this script, please create new issue.
