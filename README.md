@@ -8,9 +8,9 @@ Revert Xcode PNG compression (CgBI) in plain javascript.
 ```
 var cgbiToPng = require('cgbi-to-png');
 
-var cgbiStream = fs.createReadStream(...);
+var cgbiFileStream = fs.createReadStream(...);
 
-cgbiToPng(fs.createReadStream(filePath),function(err,pngStream){
+cgbiToPng(cgbiFileStream,function(err,pngStream){
     // handle reverted pngStream (eg. pngStream.pipe(...))
 });
 
