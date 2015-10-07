@@ -20,4 +20,10 @@ describe('convert',function(){
                 })
         })
     })
+
+    it('should convert cgbi to png (buffers)',function(){
+        var cgbiBuffer = fs.readFileSync(filePath);
+        var pngBuffer = cgbiToPng.revert(cgbiBuffer);
+        assert.ok(pngBuffer);
+    })
 })
