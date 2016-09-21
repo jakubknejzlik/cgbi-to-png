@@ -25,5 +25,6 @@ describe('convert',function(){
         var cgbiBuffer = fs.readFileSync(filePath);
         var pngBuffer = cgbiToPng.revert(cgbiBuffer);
         assert.ok(pngBuffer);
+        assert.notEqual(pngBuffer.toString(),cgbiBuffer.toString())
     })
 })
