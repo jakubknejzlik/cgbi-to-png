@@ -84,12 +84,11 @@
         idatData = zlib.deflateSync(newData);
         chunkCRC = crc.crc32('IDAT' + idatData);
         chunkCRC = (chunkCRC + 0x100000000) % 0x100000000;
-        console.log(chunkCRC, '....');
         idat_chunk = {
           'type': 'IDAT',
           'length': idatData.length,
           'data': idatData,
-          'crc': 123
+          'crc': chunkCRC
         };
         chunks.push(idat_chunk);
       }
