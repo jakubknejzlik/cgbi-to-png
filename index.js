@@ -37,7 +37,7 @@
     headerData = buffer.slice(0, 8);
     offset += 8;
     if (headerData.toString('base64') !== PNGHEADER_BASE64) {
-      return callback(new Error('not a png file'));
+      throw new Error('not a png file');
     }
     while (offset < buffer.length) {
       chunk = {};
@@ -62,7 +62,7 @@
         width = bufferpack.unpack('L>', data)[0];
         height = bufferpack.unpack('L>', data, 4)[0];
       }
-      if (chunk.type === 'IDAT') {
+      if (chunk.type === 'IDAT' && isIphoneCompressed) {
         idatCgbiData = Buffer.concat([idatCgbiData, data]);
         continue;
       }

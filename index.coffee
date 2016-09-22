@@ -33,7 +33,7 @@ module.exports.revert = revertCgBIBuffer = (buffer)->
   offset += 8
 
   if headerData.toString('base64') isnt PNGHEADER_BASE64
-    return callback(new Error('not a png file'))
+    throw new Error('not a png file')
 
   while offset < buffer.length
     chunk = {}
@@ -64,7 +64,7 @@ module.exports.revert = revertCgBIBuffer = (buffer)->
       width = bufferpack.unpack('L>', data)[0]
       height = bufferpack.unpack('L>', data,4)[0]
 
-    if chunk.type is 'IDAT'
+    if chunk.type is 'IDAT' and isIphoneCompressed
       idatCgbiData = Buffer.concat([idatCgbiData,data])
       continue
 
