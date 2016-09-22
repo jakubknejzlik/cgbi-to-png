@@ -11,6 +11,8 @@ crc = require('crc')
 #PNGHEADER = new Buffer('\x89PNG\r\n\x1A\n')
 PNGHEADER_BASE64 = 'iVBORw0KGgo='
 
+ignoreChunkTypes = ['CgBI','iDOT']
+
 module.exports = (stream,callback)->
   streamToBuffer(stream,(err,buffer)->
     return callback(err) if err
@@ -54,8 +56,10 @@ module.exports.revert = revertCgBIBuffer = (buffer)->
 
     if chunk.type is 'CgBI'
       isIphoneCompressed = yes
-      continue
 
+    if chunk.type in ignoreChunkTypes
+      continue
+      
     if chunk.type is 'IHDR'
       width = bufferpack.unpack('L>', data)[0]
       height = bufferpack.unpack('L>', data,4)[0]
@@ -86,12 +90,14 @@ module.exports.revert = revertCgBIBuffer = (buffer)->
           i+=4
 
       idatData = zlib.deflateSync(newData)
-      chunkCRC = crc.crc32(crc.crc32('IDAT') + idatData.toString())
+      chunkCRC = crc.crc32('IDAT' + idatData)
+      chunkCRC = (chunkCRC + 0x100000000) % 0x100000000
+      console.log(chunkCRC,'....')
       idat_chunk = {
         'type': 'IDAT',
         'length': idatData.length
         'data': idatData,
-        'crc': chunkCRC
+        'crc': 123
       }
       chunks.push(idat_chunk)
 
