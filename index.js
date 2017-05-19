@@ -23,8 +23,12 @@
       if (err) {
         return callback(err);
       }
-      output = revertCgBIBuffer(buffer);
-      return callback(null, streamifier.createReadStream(output));
+      try {
+        output = revertCgBIBuffer(buffer);
+        return callback(null, streamifier.createReadStream(output));
+      } catch (e) {
+        return callback(e);
+      }
     });
   };
 
