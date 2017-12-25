@@ -1,4 +1,4 @@
-"strict mode";
+"use strict";
 
 (function() {
   var PNGHEADER_BASE64,

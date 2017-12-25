@@ -1,4 +1,4 @@
-"strict mode";
+"use strict";
 var assert = require("assert");
 var fs = require("fs");
 var cgbiToPng = require("../index");
