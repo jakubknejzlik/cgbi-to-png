@@ -11,10 +11,14 @@
     "streamifier": "^0.1.1"
   },
   "devDependencies": {
+    "mocha": "^4.0.1",
     "tmp": "0.0.28"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jakubknejzlik/cgbi-to-png.git"
+  },
+  "scripts": {
+    "test": "mocha test"
   }
 }
