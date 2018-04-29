@@ -119,7 +119,8 @@
           }
         }
         idatData = zlib.deflateSync(newData);
-        chunkCRC = crc.crc32("IDAT" + idatData);
+        chunkCRC = crc.crc32("IDAT");
+        chunkCRC = crc.crc32(idatData, chunkCRC);
         chunkCRC = (chunkCRC + 0x100000000) % 0x100000000;
         idat_chunk = {
           type: "IDAT",
